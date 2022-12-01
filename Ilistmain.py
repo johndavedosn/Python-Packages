@@ -1,4 +1,4 @@
-from Error import IntError
+from IlistError import IntError
 class Ilist(list):
     def __init_subclass__(self) -> None:
         return super().__init_subclass__()
