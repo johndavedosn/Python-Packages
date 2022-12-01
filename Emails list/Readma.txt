@@ -1,0 +1,5 @@
+Using Rules : 
+1.Do not use the append() function to add Arguments to the list just 
+use the add() function
+2.For using :
+varname = Emali(Value)
