@@ -1,4 +1,4 @@
-from DeclarationError import *
+from Errors import *
 # Useful Vars
 data = {}
 file_writer = open("db.txt", "a")
@@ -41,19 +41,27 @@ def divise(a, b):
     elif a not in data and b not in data:
         print(a / b)
 # Regulare Function
-def show(data):
-    print(data)
-def setvar(varname, varvalue):
-    data[varname] = varvalue
-    global varindex
-    varindex = list(data).index(varname)
-def showvar(varname):
-    print(data[varname])
+def show(data_to_show):
+    if data_to_show in data:
+        print(data[data_to_show])
+    else:
+        print(data_to_show)   
+def setvar(varname: str, varvalue, vartype: str):
+    if vartype == "str":
+        data[varname] = str(varvalue)
+    elif vartype == "int":
+        data[varname] = int(varvalue)
+    elif vartype == "float":
+        data[varname] = float(varvalue)
+    elif vartype == "bool":
+        data[varname] = bool(varvalue)
+    else:
+        raise TypeNotFoundError(vartype)
 def store(Element):
     if Element in data:
         file_writer.write(str(data[Element]))
     else:
-        file_writer.write(str(Element))
+        raise DeclarationError(Element)
 def is_it_var(Element):
     if Element in data:
         print(True)
